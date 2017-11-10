@@ -10,7 +10,7 @@ public class Course {
     private String courseCode;
     private String teacher;
     private List<String> students = new ArrayList<>();
-    private HashMap<String, HashMap<String, Double>> grades = new HashMap<String, HashMap<String, Double>>();
+    private HashMap<String, HashMap<String, Double>> grades = new HashMap<String, HashMap<String, Double>>(); //First hashmap key is student name, value is hashmap with key assignment name and value grade in the assignment.
     
     public Course(String courseCode, String teacher) {
 	this.courseCode = courseCode;
