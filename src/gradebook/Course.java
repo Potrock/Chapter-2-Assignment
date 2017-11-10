@@ -2,6 +2,7 @@ package gradebook;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class Course {
@@ -24,11 +25,23 @@ public class Course {
 	return this.teacher;
     }
 
-    public void addGradeToStudent(String assignmentName, double grade, String name){
-	if(!this.grades.containsKey(name))
-	    this.grades.put(name, new HashMap<String, Double>());
+    public void addGradeToStudent(String assignmentName, double grade, String studentName){
+	if(!this.grades.containsKey(studentName))
+	    this.grades.put(studentName, new HashMap<String, Double>());
 	
-	this.grades.get(name).put(assignmentName, grade);
+	this.grades.get(studentName).put(assignmentName, grade);
+    }
+    
+    public double getStudentAverage(String name){
+	double avg = 0;
+	if(this.grades.containsKey(name))
+	    return -1;
+	Iterator<Double> it = this.grades.get(name).values().iterator();
+	while (it.hasNext()){
+	    avg += it.next();
+	}
+	avg /= this.grades.get(name).size();
+	return avg;	
     }
     
     public List<String> getStudents() {
